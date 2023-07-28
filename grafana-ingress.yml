@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: grafana-ingress
+  labels:
+    name: grafana-ingress
+spec:
+  rules:
+  - host: grafana.gkeprom.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: prom-operator-grafana
+            port: 
+              number: 80
